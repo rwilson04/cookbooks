@@ -1,11 +1,22 @@
-Generated at Sun Jan 13 04:01:03 +0000 2013
-Chef::Exceptions::User: user[reese] (users::reese line 15) had an error: Chef::Exceptions::User: Couldn't lookup integer GID for group name 8282
-/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/mixin/why_run.rb:241:in `run'
-/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/mixin/why_run.rb:322:in `run'
-/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/mixin/why_run.rb:321:in `each'
-/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/mixin/why_run.rb:321:in `run'
-/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/provider.rb:128:in `process_resource_requirements'
-/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/provider.rb:105:in `run_action'
+Generated at Sun Jan 13 05:01:42 +0000 2013
+Mixlib::ShellOut::ShellCommandFailed: service[apache2] (apache2::default line 221) had an error: Mixlib::ShellOut::ShellCommandFailed: Expected process to exit with [0], but received '1'
+---- Begin output of /sbin/service httpd start ----
+STDOUT: Starting httpd: [FAILED]
+STDERR: Syntax error on line 38 of /etc/httpd/sites-enabled/idc-site.conf:
+RewriteCond: cannot compile regular expression '^*'
+---- End output of /sbin/service httpd start ----
+Ran /sbin/service httpd start returned 1
+/usr/lib64/ruby/gems/1.8/gems/mixlib-shellout-1.1.0/lib/mixlib/shellout.rb:248:in `invalid!'
+/usr/lib64/ruby/gems/1.8/gems/mixlib-shellout-1.1.0/lib/mixlib/shellout.rb:234:in `error!'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/mixin/shell_out.rb:36:in `shell_out!'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/provider/service/init.rb:53:in `start_service'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/provider/service.rb:90:in `action_start'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/mixin/why_run.rb:52:in `call'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/mixin/why_run.rb:52:in `add_action'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/provider.rb:152:in `converge_by'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/provider/service.rb:89:in `action_start'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/provider.rb:115:in `send'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/provider.rb:115:in `run_action'
 /usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/resource.rb:593:in `run_action'
 /usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/runner.rb:49:in `run_action'
 /usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/runner.rb:81:in `converge'
