@@ -18,3 +18,4 @@ git init
 git remote add origin https://github.com/shinymayhem/cookbooks.git
 git fetch
 git checkout master
+echo "now run update solo.json and run sudo bin/chef-update.sh"
