@@ -1,0 +1,27 @@
+{
+  "default_attributes": {
+  },
+  "description": "",   
+  "chef_type": "role", 
+  "override_attributes": {
+    "authorization": { 
+      "sudo": {        
+        "groups": [    
+          "sysadmin"   
+        ],             
+        "passwordless": true,
+        "users": [     
+          "ec2-user",                                                                                                                                                                                     
+          "ubuntu"
+        ]
+      }
+    }
+  },
+  "json_class": "Chef::Role",
+  "env_run_lists": {   
+  },                   
+  "run_list": [        
+    "recipe[base]"     
+  ],                   
+  "name": "base"       
+}
