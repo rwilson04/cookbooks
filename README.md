@@ -1,7 +1,9 @@
 To set up github to allow editing/pushing, go to the deploygithub directory and run
 openssl enc -d -aes-256-cbc -in github.pem.enc -out github.pem  #with numeral password
-cp .git/config ../.git/config
-cp .ssh/config ~/.ssh/config
+cp github.pem ~/.ssh/
+chmod 600 ~/.ssh/github.pem
+cp dotgitslashconfig ~/.git/config
+cat .ssh/config >> ~/.ssh/config
 
 encrypt data bags with 
 openssl enc -aes-256-cbc -salt -in file.ext -out github.pem.enc
