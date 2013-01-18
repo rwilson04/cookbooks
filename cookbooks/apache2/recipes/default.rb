@@ -214,6 +214,15 @@ node['apache']['default_modules'].each do |mod|
   include_recipe "apache2::#{module_recipe_name}"
 end
 
+template "/etc/php.ini" do
+	source "php.ini.erb"
+	owner "root"
+	group "root"
+	mode 0644
+	notifies :restart, "service[apache2]"
+end
+
+
 apache_site "default" do
   enable !!node['apache']['default_site_enabled']
 end

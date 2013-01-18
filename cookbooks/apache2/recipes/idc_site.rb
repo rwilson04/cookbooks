@@ -89,7 +89,7 @@ end
 
 #only change ownership from root:root to root:developers
 execute "own" do
-    command "chown -R --from root:root root:developers #{app_dir}"
+    command "chown -R --from root:root root:developers #{app_dir}; chmod g+w #{app_dir}"
 end
 
 #all files written in this directory will be owned by the developers group

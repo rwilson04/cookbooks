@@ -49,7 +49,11 @@ directory "/home/#{username}/web" do
         owner "#{username}"
         group "#{username}"
         mode "0755"
-        action :create
+		if File.directory?("/home/#{username}/web")
+			action :nothing
+		else
+			action :create
+		end
 end
 
 execute "map" do
