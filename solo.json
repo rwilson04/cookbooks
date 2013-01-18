@@ -1,6 +1,7 @@
 {
 	"run_list": [ 
 		"role[idc_site]" ,
-		"role[reese]"
+		"role[reese]",
+		"role[julian]"
 	]
 }

@@ -1,6 +1,6 @@
 username = "reese"
 uid = 8282
-gid = "reese"
+gid = "#{username}"
 #users_manage "#{username}" do #doesn't seem to work with chef-solo
         #comment "Reese Wilson"
         #uid=1082
@@ -11,6 +11,10 @@ gid = "reese"
         #action [:remove, :create]
         #action [:create]
 #end
+group "#{gid}" do
+	gid "#{uid}"
+	action :create
+end
 
 user "#{username}" do
 	uid "#{uid}"
@@ -21,15 +25,22 @@ user "#{username}" do
 	action :create
 end
 
+group "#{username}" do
+	action :modify
+	members "#{username}"
+	append true
+end
+
+
 group "sysadmin" do
 	action :modify
-	members "reese"
+	members "#{username}"
 	append true
 end
 
 group "developers" do
 	action :modify
-	members "reese"
+	members "#{username}"
 	append true
 end
 
@@ -42,9 +53,9 @@ end
 
 execute "key" do
 	if File.exists?("/home/ec2-user/.ssh/authorized_keys")
-		command "cp /home/ec2-user/.ssh/authorized_keys /home/#{username}/.ssh/authorized_keys; chown reese:reese /home/#{username}/.ssh/authorized_keys"
+		command "cp /home/ec2-user/.ssh/authorized_keys /home/#{username}/.ssh/authorized_keys; chown #{username}:#{username} /home/#{username}/.ssh/authorized_keys"
 	else
-		command "cp /home/ubuntu/.ssh/authorized_keys /home/#{username}/.ssh/authorized_keys; chown reese:reese /home/#{username}/.ssh/authorized_keys"
+		command "cp /home/ubuntu/.ssh/authorized_keys /home/#{username}/.ssh/authorized_keys; chown #{username}:#{username} /home/#{username}/.ssh/authorized_keys"
 	end
 end
 

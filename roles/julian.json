@@ -1,0 +1,15 @@
+{
+  "run_list": [
+    "recipe[users::julian]"
+  ],
+  "json_class": "Chef::Role",
+  "name": "julian",     
+  "override_attributes": {
+  },
+  "description": "",   
+  "default_attributes": {
+  },
+  "env_run_lists": {   
+  },
+  "chef_type": "role"  
+}

@@ -87,8 +87,14 @@ end
 #	end
 #end
 
+#only change ownership from root:root to root:developers
 execute "own" do
     command "chown -R --from root:root root:developers #{app_dir}"
+end
+
+#all files written in this directory will be owned by the developers group
+execute "groupwrite" do
+    command "chmod -R g+s #{app_dir}"
 end
 
 execute "apache-own" do #if directories exist, have apache be the owner for writing logs, etc
