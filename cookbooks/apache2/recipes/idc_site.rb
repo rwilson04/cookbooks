@@ -1,11 +1,30 @@
 #
 # Cookbook Name:: apache2
 # Recipe:: idc_site
+
+include_recipe "mysql::idc"
 include_recipe "users::developers"
+
+package "php-mcrypt" do
+    action :install
+end                                                                                                                                                                                                               
+
+package "php-mbstring" do
+    action :install
+end                                                                                                                                                                                                               
 
 package "php-xml" do
     action :install
 end                                                                                                                                                                                                               
+
+package "php-mysql" do
+    action :install
+end                                                                                                                                                                                                               
+
+package "php-mysqli" do
+    action :install
+end                                                                                                                                                                                                               
+
 
 app_dir = "/var/www/html/idc"
 
@@ -25,8 +44,11 @@ end
 #add site vhost
 web_app "idc-site" do
     server_name "*"
+	template "phpmyadmin_web_app.conf.erb"
     server_aliases [ node['hostname'], node['dqdn'],  "imagodeicollege.com", "imagodeicollege.shinymayhem.com"]
+	allow_override "All"
     docroot "#{app_dir}/public"
+	phpmyadminroot "#{app_dir}/phpmyadmin"
     directory_index "index.php"
 end
 

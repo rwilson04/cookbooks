@@ -1,32 +1,35 @@
-Generated at Fri Jan 18 18:58:54 +0000 2013
-JSON::ParserError: 387: unexpected token at ': "America/Los_Angeles",
-	  	"display_errors": "0",
-		"error_reporting": "E_NONE"
-	  ]
-  },
-  "json_class": "Chef::Role",
-  "override_attributes": {
-  },
-  "chef_type": "role", 
-  "description": "",
-  "name": "webserver"  
-} 
-'
-/usr/lib64/ruby/gems/1.8/gems/json-1.6.1/lib/json/common.rb:148:in `parse'
-/usr/lib64/ruby/gems/1.8/gems/json-1.6.1/lib/json/common.rb:148:in `parse'
-/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/json_compat.rb:41:in `from_json'
-/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/role.rb:320:in `from_disk'
-/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/run_list/run_list_expansion.rb:166:in `fetch_role'
-/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/run_list/run_list_expansion.rb:96:in `inflate_role'
-/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/run_list/run_list_expansion.rb:151:in `expand_run_list_items'
-/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/run_list/run_list_expansion.rb:156:in `expand_run_list_items'
-/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/run_list/run_list_expansion.rb:152:in `expand_run_list_items'
-/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/run_list/run_list_expansion.rb:85:in `expand'
-/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/run_list.rb:139:in `expand'
-/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/node.rb:437:in `expand!'
-/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/client.rb:305:in `expand_run_list'
-/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/client.rb:263:in `build_node'
-/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/client.rb:412:in `do_run'
+Generated at Sat Jan 19 00:01:59 +0000 2013
+Mixlib::ShellOut::ShellCommandFailed: execute[echo] (mysql::idc line 29) had an error: Mixlib::ShellOut::ShellCommandFailed: Expected process to exit with [0], but received '127'
+---- Begin output of now run 'sudo mysqladmin -u root password NEWPASSWORD' ----
+STDOUT: 
+STDERR: sh: now: command not found
+---- End output of now run 'sudo mysqladmin -u root password NEWPASSWORD' ----
+Ran now run 'sudo mysqladmin -u root password NEWPASSWORD' returned 127
+/usr/lib64/ruby/gems/1.8/gems/mixlib-shellout-1.1.0/lib/mixlib/shellout.rb:248:in `invalid!'
+/usr/lib64/ruby/gems/1.8/gems/mixlib-shellout-1.1.0/lib/mixlib/shellout.rb:234:in `error!'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/mixin/shell_out.rb:36:in `shell_out!'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/provider/execute.rb:62:in `action_run'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/mixin/why_run.rb:52:in `call'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/mixin/why_run.rb:52:in `add_action'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/provider.rb:152:in `converge_by'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/provider/execute.rb:61:in `action_run'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/provider.rb:115:in `send'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/provider.rb:115:in `run_action'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/resource.rb:593:in `run_action'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/runner.rb:49:in `run_action'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/runner.rb:81:in `converge'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/runner.rb:81:in `each'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/runner.rb:81:in `converge'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/resource_collection.rb:94:in `execute_each_resource'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/resource_collection/stepable_iterator.rb:116:in `call'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/resource_collection/stepable_iterator.rb:116:in `call_iterator_block'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/resource_collection/stepable_iterator.rb:85:in `step'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/resource_collection/stepable_iterator.rb:104:in `iterate'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/resource_collection/stepable_iterator.rb:55:in `each_with_index'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/resource_collection.rb:92:in `execute_each_resource'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/runner.rb:80:in `converge'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/client.rb:378:in `converge'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/client.rb:420:in `do_run'
 /usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/client.rb:176:in `run'
 /usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/application.rb:140:in `run_chef_client'
 /usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/application/solo.rb:224:in `run_application'

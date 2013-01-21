@@ -1,5 +1,4 @@
 _ separate local recipes from opscode chef git submodule cookbooks
-_ set up ftp 
 _ modify openssh recipe for timeouts
-_ set up git repo for idc code
-_ add idc repo to idc-site recipe
+x set up git repo for idc code
+x add idc repo to idc-site recipe
