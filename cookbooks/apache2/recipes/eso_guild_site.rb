@@ -1,40 +1,20 @@
 #
 # Cookbook Name:: apache2
-# Recipe:: idc_site
+# Recipe:: eso_guild_site
 
 include_recipe "mysql::server_webapp"
+
 include_recipe "users::developers"
 
-package "php-mcrypt" do
-    action :install
-end                                                                                                                                                                                                               
-
-package "php-mbstring" do
-    action :install
-end                                                                                                                                                                                                               
-
-package "php-xml" do
-    action :install
-end                                                                                                                                                                                                               
-
-package "php-mysql" do
-    action :install
-end                                                                                                                                                                                                               
-
-package "php-mysqli" do
-    action :install
-end                                                                                                                                                                                                               
-
-
-app_dir = "/var/www/html/idc"
+app_dir = "/var/www/html/guild"
 
 #should be created by web_app resource
-#directory "#{app_dir}" do
-#	owner "apache"
-#	group "developers"
-#	mode "0755"
-#	action :create
-#end
+directory "#{app_dir}" do
+	owner "apache"
+	group "developers"
+	mode "0755"
+	action :create
+end
 
 # disable default site
 apache_site "default" do
@@ -44,10 +24,10 @@ end
 #add site vhost
 web_app "idc-site" do
     server_name "*"
-	template "phpmyadmin_web_app.conf.erb"
-    server_aliases [ node['hostname'], node['dqdn'],  "imagodeicollege.com", "imagodeicollege.shinymayhem.com"]
+	template "web_app.conf.erb"
+    server_aliases [ node['hostname'], node['dqdn'], "guild.shinymayhem.com",  "eso-guild.shinymayhem.com"]
 	allow_override "All"
-    docroot "#{app_dir}/public"
+    docroot "#{app_dir}"
 	phpmyadminroot "#{app_dir}/phpmyadmin"
     directory_index "index.php"
 end
@@ -122,6 +102,11 @@ end
 execute "apache-own" do #if directories exist, have apache be the owner for writing logs, etc
     command "if [ -r #{app_dir}/logs ]; then
      chown -R apache:developers #{app_dir}/logs; 
+    fi 
+    if [ -r #{app_dir}/wp-content ]; then
+        chown -R apache:developers #{app_dir}/wp-content
+        chown -R apache:developers #{app_dir}/wp-includes
+        chown -R apache:developers #{app_dir}/wp-admin
     fi 
     if [ -r #{app_dir}/logs ]; then
         chown -R apache:developers #{app_dir}/data

@@ -1,13 +1,13 @@
-Generated at Sat Jan 19 00:01:59 +0000 2013
-Mixlib::ShellOut::ShellCommandFailed: execute[echo] (mysql::idc line 29) had an error: Mixlib::ShellOut::ShellCommandFailed: Expected process to exit with [0], but received '127'
----- Begin output of now run 'sudo mysqladmin -u root password NEWPASSWORD' ----
-STDOUT: 
-STDERR: sh: now: command not found
----- End output of now run 'sudo mysqladmin -u root password NEWPASSWORD' ----
-Ran now run 'sudo mysqladmin -u root password NEWPASSWORD' returned 127
-/usr/lib64/ruby/gems/1.8/gems/mixlib-shellout-1.1.0/lib/mixlib/shellout.rb:248:in `invalid!'
-/usr/lib64/ruby/gems/1.8/gems/mixlib-shellout-1.1.0/lib/mixlib/shellout.rb:234:in `error!'
-/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/mixin/shell_out.rb:36:in `shell_out!'
+Generated at Sat Feb 02 20:50:53 +0000 2013
+Errno::ENOENT: execute[swap] (mysql::server_webapp line 34) had an error: Errno::ENOENT: No such file or directory - swap
+/usr/lib64/ruby/gems/1.8/gems/mixlib-shellout-1.1.0/lib/mixlib/shellout/unix.rb:232:in `exec'
+/usr/lib64/ruby/gems/1.8/gems/mixlib-shellout-1.1.0/lib/mixlib/shellout/unix.rb:232:in `fork_subprocess'
+/usr/lib64/ruby/gems/1.8/gems/mixlib-shellout-1.1.0/lib/mixlib/shellout/unix.rb:222:in `fork'
+/usr/lib64/ruby/gems/1.8/gems/mixlib-shellout-1.1.0/lib/mixlib/shellout/unix.rb:222:in `fork_subprocess'
+/usr/lib64/ruby/gems/1.8/gems/mixlib-shellout-1.1.0/lib/mixlib/shellout/unix.rb:35:in `run_command'
+/usr/lib64/ruby/gems/1.8/gems/mixlib-shellout-1.1.0/lib/mixlib/shellout.rb:222:in `run_command'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/mixin/shell_out.rb:30:in `shell_out'
+/usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/mixin/shell_out.rb:35:in `shell_out!'
 /usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/provider/execute.rb:62:in `action_run'
 /usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/mixin/why_run.rb:52:in `call'
 /usr/lib64/ruby/gems/1.8/gems/chef-10.16.6/bin/../lib/chef/mixin/why_run.rb:52:in `add_action'

@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: mysql
-# Recipe:: idc
+# Recipe:: server_webapp
 #
 # Copyright 2008-2009, Opscode, Inc.
 #
@@ -28,4 +28,15 @@ end
 
 execute "echo" do
 	command "echo if mysql just installed, run 'sudo mysqladmin -u root password NEWPASSWORD'"
+end
+
+# micro instances will crash unless there is some swap space
+execute "swap" do
+	if File.exists?("/swapfile")
+		puts("swapfile exists")
+		action :nothing
+	else
+		puts("creating swapfile")
+		command "dd if=/dev/zero of=/swapfile bs=1M count=1024; mkswap /swapfile; swapon /swapfile; echo '/swapfile swap swap defaults 0 0' >> /etc/fstab"
+	end
 end

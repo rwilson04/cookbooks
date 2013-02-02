@@ -1,0 +1,17 @@
+{
+  "run_list": [        
+    "role[base]", 
+    "role[webserver]", 
+    "recipe[apache2::eso_guild_site]"
+  ],                   
+  "env_run_lists": {   
+  },                   
+  "default_attributes": {
+  },                   
+  "json_class": "Chef::Role",
+  "override_attributes": {
+  },                   
+  "chef_type": "role", 
+  "description": "",   
+  "name": "idc_site"
+}                    
