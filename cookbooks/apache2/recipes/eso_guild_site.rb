@@ -22,7 +22,7 @@ apache_site "default" do
 end
 
 #add site vhost
-web_app "idc-site" do
+web_app "guild-site" do
     server_name "*"
 	template "web_app.conf.erb"
     server_aliases [ node['hostname'], node['dqdn'], "guild.shinymayhem.com",  "eso-guild.shinymayhem.com"]
@@ -115,5 +115,5 @@ end
 
 
 execute "writeable" do #writeable to developers group
-    command "find #{app_dir} -group developers | xargs chmod g+w"
+    command "find #{app_dir} -group developers | xargs -I{} chmod g+w {}"
 end
