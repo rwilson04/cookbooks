@@ -23,7 +23,7 @@ end
 
 #add site vhost
 web_app "guild-site" do
-    server_name "*"
+    server_name "guild.shinymayhem.com"
 	template "web_app.conf.erb"
     server_aliases [ node['hostname'], node['dqdn'], "guild.shinymayhem.com",  "eso-guild.shinymayhem.com"]
 	allow_override "All"

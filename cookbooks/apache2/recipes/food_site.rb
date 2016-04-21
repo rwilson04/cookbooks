@@ -1,6 +1,3 @@
-#
-# Cookbook Name:: apache2
-# Recipe:: idc_site
 
 include_recipe "mysql::server_webapp"
 include_recipe "users::developers"
@@ -26,88 +23,35 @@ package "php-mysqli" do
 end                                                                                                                                                                                                               
 
 
-app_dir = "/var/www/html/idc"
-
-#should be created by web_app resource
-#directory "#{app_dir}" do
-#	owner "apache"
-#	group "developers"
-#	mode "0755"
-#	action :create
-#end
+app_dir = "/var/www/html/food"
 
 # disable default site
 apache_site "default" do
     enable false
 end
 
-#add site vhost
-web_app "idc-site" do
-    server_name "imagodeicollege.shinymayhem.com"
-	template "phpmyadmin_web_app.conf.erb"
-    server_aliases [ node['hostname'], node['dqdn'],  "imagodeicollege.com", "imagodeicollege.shinymayhem.com"]
-	allow_override "All"
-    docroot "#{app_dir}/public"
-	phpmyadminroot "#{app_dir}/phpmyadmin"
-    directory_index "index.php"
+#should be created by web_app resource
+directory "#{app_dir}" do
+	owner "apache"
+	group "developers"
+	mode "0755"
+	action :create
 end
 
-#directory "/opt/deploy" do
-#    owner "root"
-#    group "root"
-#    mode "0755"
-#    action :create 
-#end
-#
-#cookbook_file "git_wrapper.sh" do
-#    path "/opt/deploy/git_wrapper.sh"
-#    owner "root"
-#    group "root"
-#    mode "0755"
-#end
-#
-#cookbook_file "tzmm-processing-deploy.pem" do
-#    path "/opt/deploy/tzmm-processing-deploy.pem"
-#    owner "root"
-#    group "root"
-#    mode "0600"
-#end
+
+web_app "food-site" do
+    server_name "food.shinymayhem.com"
+	#template "phpmyadmin_web_app.conf.erb"
+    server_aliases [ node['hostname'], node['dqdn'] ]
+	allow_override "All"
+    docroot "#{app_dir}/public"
+	#phpmyadminroot "#{app_dir}/phpmyadmin"
+    directory_index "index.php"
+end
 
 package "git" do
     action :install
 end
-
-
-#branch_name = node.chef_environment
-#git "#{app_dir}" do
-#    repository "git@github.com:reesew/tzmm-processing.git"
-#    ssh_wrapper "/opt/deploy/git_wrapper.sh"
-#    #revision "HEAD"
-#    revision branch_name
-#    branch_name = node.chef_environment
-#    if node.chef_environment == "production" or node.chef_environment == "staging" or node.chef_environment == "testing"
-#        action [:checkout, :sync]
-#    elsif node.chef_environment == "development" and not File.exists?("#{app_dir}/.git/config")
-#        action :checkout
-#    else    
-#        action :nothing
-#    end
-#end
-
-#package "svn" do #required for composer hamcrest
-#    if node.chef_environment == "development" or node.chef_environment == "testing"
-#        action :install
-#    else    
-#        action :nothing
-#    end
-#end
-
-#execute "composer" do
-#	if File.exists?("#{app_dir}/composer.phar")
-#		puts("exists")
-#		command "cd #{app_dir}/; php composer.phar update"
-#	end
-#end
 
 #only change ownership from root:root to root:developers
 execute "own" do
@@ -125,6 +69,9 @@ execute "apache-own" do #if directories exist, have apache be the owner for writ
     fi 
     if [ -r #{app_dir}/logs ]; then
         chown -R apache:developers #{app_dir}/data
+    fi 
+    if [ -r #{app_dir}/public/cache ]; then
+        chown -R apache:developers #{app_dir}/public/cache
     fi "
 end
 

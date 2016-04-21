@@ -1,7 +1,7 @@
 {
 	"run_list": [ 
 		"role[idc_site]" ,
-		"role[eso_guild_site]" ,
+		"role[food_site]" ,
 		"role[reese]",
 		"role[julian]"
 	],
